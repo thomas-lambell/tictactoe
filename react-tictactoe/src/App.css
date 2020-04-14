@@ -1,0 +1,26 @@
+.app {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.ticTacToe-game{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 30rem;
+    margin-bottom: 2rem;
+}
+.toe-square{
+    border: 0.2rem solid black;
+    flex-basis: 30%;
+    min-height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    cursor: pointer;
+}
