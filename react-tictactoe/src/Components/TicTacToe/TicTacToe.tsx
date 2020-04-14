@@ -18,7 +18,7 @@ export default function TicTacToe() {
 	};
 	
 	const onClickTicTacToeTile = (index: number) => {
-		if (ticTacToeValues[index] != TicTacToeValue.undefined) return;
+		if (ticTacToeValues[index] !== TicTacToeValue.undefined) return;
 		let playState = ticTacToeValues;
 		playState[index] = playerValue;
 		setTicTacToeValues(playState);
