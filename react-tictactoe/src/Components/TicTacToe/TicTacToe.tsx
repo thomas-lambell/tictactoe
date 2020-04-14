@@ -5,7 +5,7 @@ enum TicTacToeValue{ X = 'X' , O = 'O' , undefined = '' }
 
 export default function TicTacToe() {
 	const[ticTacToeValues, setTicTacToeValues] = useState<Array<TicTacToeValue>>([]);
-	const[playerValue, setPlayerValue] = useState<TicTacToeValue>(TicTacToeValue.X);
+	const[playerValue, setNextPlayerValue] = useState<TicTacToeValue>(TicTacToeValue.X);
 	
 	useEffect(() => {
 		setEmptyState()
@@ -22,7 +22,7 @@ export default function TicTacToe() {
 		let playState = ticTacToeValues;
 		playState[index] = playerValue;
 		setTicTacToeValues(playState);
-		setPlayerValue(playerValue === TicTacToeValue.X ? TicTacToeValue.O : TicTacToeValue.X);
+		setNextPlayerValue(playerValue === TicTacToeValue.X ? TicTacToeValue.O : TicTacToeValue.X);
 	};
 	
 	return (
