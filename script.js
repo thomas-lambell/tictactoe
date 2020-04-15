@@ -10,31 +10,27 @@ setup();
 function setup(){
 
 buttonClickedArray();
+setupSquares();
+resetBtn();
 
-for (let i = 0; i < squares.length; i++){
-    squares[i].addEventListener("click", function(){
-                if(!playerTwoTurn && !buttonClicked[i][0]){ 
-                    this.textContent = "X";
-                    playerTwoTurn = true;
-                    buttonClicked[i][0] = true;
-                    buttonClicked[i][1] = "X"
-                } else if(playerTwoTurn && !buttonClicked[i][0]){
-                    this.textContent = "O";
-                    playerTwoTurn = false;
-                    buttonClicked[i][0] = true;
-                    buttonClicked[i][1] = "O"
-                }
-        })}
 }
 
-reset.addEventListener("click", function(){
+function setupSquares(){
     for (let i = 0; i < squares.length; i++){
-        squares[i].textContent = ""
-        playerTwoTurn = false;
-        buttonClicked[i][0] = false;
-    }
-})
-
+        squares[i].addEventListener("click", function(){
+                    if(!playerTwoTurn && !buttonClicked[i][0]){ 
+                        this.textContent = "X";
+                        playerTwoTurn = true;
+                        buttonClicked[i][0] = true;
+                        buttonClicked[i][1] = "X"
+                    } else if(playerTwoTurn && !buttonClicked[i][0]){
+                        this.textContent = "O";
+                        playerTwoTurn = false;
+                        buttonClicked[i][0] = true;
+                        buttonClicked[i][1] = "O"
+                    }
+            })}    
+}
 
 //tribute to Tom. LET THERE BE LIGHT!!!
 function buttonClickedArray(){
@@ -43,4 +39,14 @@ function buttonClickedArray(){
         buttonClicked[j][0] = false;
         buttonClicked[j][1] = null;
     } 
+}
+
+function resetBtn(){
+    reset.addEventListener("click", function(){
+        for (let i = 0; i < squares.length; i++){
+            squares[i].textContent = ""
+            playerTwoTurn = false;
+            buttonClicked[i][0] = false;
+        }
+    })
 }
