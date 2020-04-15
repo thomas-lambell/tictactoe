@@ -1,5 +1,5 @@
 let playerTwoTurn = false;
-let buttonClicked = [];
+let buttonClicked = [[]];
 
 //setup query listeners for the squares
 let squares = document.querySelectorAll(".square");
@@ -37,8 +37,12 @@ reset.addEventListener("click", function(){
 //tribute to Tom. LET THERE BE LIGHT!!!
 function buttonClickedArray(){
     for (let j = 0; j < 9; j++){
-        buttonClicked[j] = false;
+        buttonClicked[j] = [];
+        buttonClicked[j][0] = false;
+        buttonClicked[j][1] = null;
     }
+    // for (let i = 0; i < 9; i++){
+    //     buttonClicked[i] = [];
+    //     buttonClicked[i][1] = null;
+    // }
 }
-
-
