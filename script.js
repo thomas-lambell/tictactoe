@@ -13,14 +13,16 @@ buttonClickedArray();
 
 for (let i = 0; i < squares.length; i++){
     squares[i].addEventListener("click", function(){
-                if(!playerTwoTurn && !buttonClicked[i]){ 
+                if(!playerTwoTurn && !buttonClicked[i][0]){ 
                     this.textContent = "X";
                     playerTwoTurn = true;
-                    buttonClicked[i] = true;
-                } else if(playerTwoTurn && !buttonClicked[i]){
+                    buttonClicked[i][0] = true;
+                    buttonClicked[i][1] = "X"
+                } else if(playerTwoTurn && !buttonClicked[i][0]){
                     this.textContent = "O";
                     playerTwoTurn = false;
-                    buttonClicked[i] = true;
+                    buttonClicked[i][0] = true;
+                    buttonClicked[i][1] = "O"
                 }
         })}
 }
@@ -29,7 +31,7 @@ reset.addEventListener("click", function(){
     for (let i = 0; i < squares.length; i++){
         squares[i].textContent = ""
         playerTwoTurn = false;
-        buttonClicked[i] = false;
+        buttonClicked[i][0] = false;
     }
 })
 
@@ -40,9 +42,5 @@ function buttonClickedArray(){
         buttonClicked[j] = [];
         buttonClicked[j][0] = false;
         buttonClicked[j][1] = null;
-    }
-    // for (let i = 0; i < 9; i++){
-    //     buttonClicked[i] = [];
-    //     buttonClicked[i][1] = null;
-    // }
+    } 
 }
