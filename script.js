@@ -23,7 +23,7 @@ function setupSquares(){
                         playerTwoTurn = true;
                         buttonClicked[i][0] = true;
                         buttonClicked[i][1] = "X"
-                            if(buttonClicked[0][0] && buttonClicked[1][0] && buttonClicked[2][0] && buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
+                            if(gameWonTopRow() || gameWonMiddleRow() || gameWonBottomRow() || gameWonLeftColumn() || gameWonMiddleColumn() || gameWonRightColumn()){
                                 console.log("WINNER!")
                             }
                     } else if(playerTwoTurn && !buttonClicked[i][0]){
@@ -33,6 +33,54 @@ function setupSquares(){
                         buttonClicked[i][1] = "O"
                     }
             })}    
+}
+
+function gameWonTopRow(){
+    if (buttonClicked[0][0] && buttonClicked[1][0] && buttonClicked[2][0] && buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
+}
+
+function gameWonMiddleRow(){
+    if (buttonClicked[3][0] && buttonClicked[4][0] && buttonClicked[5][0] && buttonClicked[3][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[5][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
+}
+
+function gameWonBottomRow(){
+    if (buttonClicked[6][0] && buttonClicked[7][0] && buttonClicked[8][0] && buttonClicked[6][1] === "X" && buttonClicked[7][1] === "X" && buttonClicked[8][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
+}
+
+function gameWonLeftColumn(){
+    if (buttonClicked[0][0] && buttonClicked[3][0] && buttonClicked[6][0] && buttonClicked[0][1] === "X" && buttonClicked[3][1] === "X" && buttonClicked[6][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
+}
+
+function gameWonMiddleColumn(){
+    if (buttonClicked[1][0] && buttonClicked[4][0] && buttonClicked[7][0] && buttonClicked[1][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[7][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
+}
+
+function gameWonRightColumn(){
+    if (buttonClicked[2][0] && buttonClicked[5][0] && buttonClicked[8][0] && buttonClicked[2][1] === "X" && buttonClicked[5][1] === "X" && buttonClicked[8][1] === "X"){
+        return true;
+    } else {
+        return false;        
+    }
 }
 
 //tribute to Tom. LET THERE BE LIGHT!!!
