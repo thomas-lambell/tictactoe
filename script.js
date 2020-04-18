@@ -23,6 +23,9 @@ function setupSquares(){
                         playerTwoTurn = true;
                         buttonClicked[i][0] = true;
                         buttonClicked[i][1] = "X"
+                            if(buttonClicked[0][0] && buttonClicked[1][0] && buttonClicked[2][0] && buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
+                                console.log("WINNER!")
+                            }
                     } else if(playerTwoTurn && !buttonClicked[i][0]){
                         this.textContent = "O";
                         playerTwoTurn = false;
