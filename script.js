@@ -1,5 +1,6 @@
 let playerTwoTurn = false;
 let buttonClicked = [[]];
+var gameWon = false;
 
 //setup query listeners for the squares
 let squares = document.querySelectorAll(".square");
@@ -23,8 +24,14 @@ function setupSquares(){
                         playerTwoTurn = true;
                         buttonClicked[i][0] = true;
                         buttonClicked[i][1] = "X"
-                            if(gameWonTopRow() || gameWonMiddleRow() || gameWonBottomRow() || gameWonLeftColumn() || gameWonMiddleColumn() || gameWonRightColumn()){
-                                console.log("WINNER!")
+                        gameWonTopRow();
+                        gameWonMiddleRow();
+                        gameWonBottomRow();
+                        gameWonLeftColumn();
+                        gameWonMiddleColumn();
+                        gameWonRightColumn();
+                            if(gameWon){
+                                console.log("WINNER!");
                             }
                     } else if(playerTwoTurn && !buttonClicked[i][0]){
                         this.textContent = "O";
@@ -36,50 +43,43 @@ function setupSquares(){
 }
 
 function gameWonTopRow(){
-    if (buttonClicked[0][0] && buttonClicked[1][0] && buttonClicked[2][0] && buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
-        return true;
-    } else {
-        return false;        
+
+    for(var i = 0; i < 3; i++){
+        
     }
+
+    // if (buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
+    //     gameWon = true;
+    // }
 }
 
 function gameWonMiddleRow(){
-    if (buttonClicked[3][0] && buttonClicked[4][0] && buttonClicked[5][0] && buttonClicked[3][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[5][1] === "X"){
-        return true;
-    } else {
-        return false;        
+    if (buttonClicked[3][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[5][1] === "X"){
+        gameWon = true;
     }
 }
 
 function gameWonBottomRow(){
-    if (buttonClicked[6][0] && buttonClicked[7][0] && buttonClicked[8][0] && buttonClicked[6][1] === "X" && buttonClicked[7][1] === "X" && buttonClicked[8][1] === "X"){
-        return true;
-    } else {
-        return false;        
+    if (buttonClicked[6][1] === "X" && buttonClicked[7][1] === "X" && buttonClicked[8][1] === "X"){
+        gameWon = true;
     }
 }
 
 function gameWonLeftColumn(){
-    if (buttonClicked[0][0] && buttonClicked[3][0] && buttonClicked[6][0] && buttonClicked[0][1] === "X" && buttonClicked[3][1] === "X" && buttonClicked[6][1] === "X"){
-        return true;
-    } else {
-        return false;        
+    if (buttonClicked[0][1] === "X" && buttonClicked[3][1] === "X" && buttonClicked[6][1] === "X"){
+        gameWon = true;
     }
 }
 
 function gameWonMiddleColumn(){
-    if (buttonClicked[1][0] && buttonClicked[4][0] && buttonClicked[7][0] && buttonClicked[1][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[7][1] === "X"){
-        return true;
-    } else {
-        return false;        
+    if (buttonClicked[1][1] === "X" && buttonClicked[4][1] === "X" && buttonClicked[7][1] === "X"){
+        gameWon = true;
     }
 }
 
 function gameWonRightColumn(){
-    if (buttonClicked[2][0] && buttonClicked[5][0] && buttonClicked[8][0] && buttonClicked[2][1] === "X" && buttonClicked[5][1] === "X" && buttonClicked[8][1] === "X"){
-        return true;
-    } else {
-        return false;        
+    if (buttonClicked[2][1] === "X" && buttonClicked[5][1] === "X" && buttonClicked[8][1] === "X"){
+        gameWon = true;
     }
 }
 
@@ -95,9 +95,12 @@ function buttonClickedArray(){
 function resetBtn(){
     reset.addEventListener("click", function(){
         for (let i = 0; i < squares.length; i++){
-            squares[i].textContent = ""
+            squares[i].textContent = "";
+            gameWon = false;
             playerTwoTurn = false;
             buttonClicked[i][0] = false;
-        }
+            buttonClicked[i][1] = "";
+        }        
     })
+    
 }
