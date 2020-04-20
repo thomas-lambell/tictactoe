@@ -45,16 +45,22 @@ function setupSquares(){
 
 function gameWonRow(currentSquare){
     var squareCount = 0;
-    if(currentSquare === 7 || 8){
-
-    } else{
+    if(currentSquare === 0 || 3 || 6){
         for(var i = currentSquare; i < (currentSquare+3); i++){
             if (buttonClicked[i][0]){
                 squareCount += 1;
             } if (squareCount === 3){
                 gameWon = true;
             }
-        }
+        } 
+    }else if (currentSquare === 2 || 5 || 8){
+            for (var i = currentSquare-2; i < currentSquare; i++){
+                if (buttonClicked[i][0]){
+                    squareCount += 1;
+                } if (squareCount === 3){
+                    gameWon = true;
+                }
+            }
     }
 
 }
