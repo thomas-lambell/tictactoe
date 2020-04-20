@@ -24,7 +24,8 @@ function setupSquares(){
                         playerTwoTurn = true;
                         buttonClicked[i][0] = true;
                         buttonClicked[i][1] = "X"
-                        gameWonTopRow();
+                        gameWonRow(i);
+                        // gameWonTopRow();
                         gameWonMiddleRow();
                         gameWonBottomRow();
                         gameWonLeftColumn();
@@ -42,15 +43,26 @@ function setupSquares(){
             })}    
 }
 
-function gameWonTopRow(){
+function gameWonRow(currentSquare){
+    var squareCount = 0;
+    if(currentSquare === 7 || 8){
 
-    for(var i = 0; i < 3; i++){
-        
+    } else{
+        for(var i = currentSquare; i < (currentSquare+3); i++){
+            if (buttonClicked[i][0]){
+                squareCount += 1;
+            } if (squareCount === 3){
+                gameWon = true;
+            }
+        }
     }
 
-    // if (buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
-    //     gameWon = true;
-    // }
+}
+
+function gameWonTopRow(){
+    if (buttonClicked[0][1] === "X" && buttonClicked[1][1] === "X" && buttonClicked[2][1] === "X"){
+        gameWon = true;
+    }
 }
 
 function gameWonMiddleRow(){
