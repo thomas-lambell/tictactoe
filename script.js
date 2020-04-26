@@ -26,8 +26,8 @@ function setupSquares(){
                         buttonClicked[i][1] = "X"
                         gameWonRow(i);
                         // gameWonTopRow();
-                        gameWonMiddleRow();
-                        gameWonBottomRow();
+                        //gameWonMiddleRow();
+                        //gameWonBottomRow();
                         gameWonLeftColumn();
                         gameWonMiddleColumn();
                         gameWonRightColumn();
@@ -44,8 +44,11 @@ function setupSquares(){
 }
 
 function gameWonRow(currentSquare){
-    var squareCount = 0;
-    if(currentSquare === 0 || 3 || 6){
+    var squareCount = 0;  
+    if(currentSquare === 0 || currentSquare === 3 || currentSquare === 6){
+        console.log("First IF");
+        console.log(currentSquare);
+
         for(var i = currentSquare; i < (currentSquare+3); i++){
             if (buttonClicked[i][0]){
                 squareCount += 1;
@@ -53,7 +56,8 @@ function gameWonRow(currentSquare){
                 gameWon = true;
             }
         } 
-    }else if (currentSquare === 2 || 5 || 8){
+    } else if (currentSquare === 2 || currentSquare === 5 || currentSquare === 8){
+        console.log("Second IF");
             for (var i = currentSquare-2; i < currentSquare; i++){
                 if (buttonClicked[i][0]){
                     squareCount += 1;
